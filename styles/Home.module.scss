@@ -49,8 +49,14 @@
                 top: 0px;
                 z-index: -1;
 
-                @include media(">=xtra_large_desktop") {
+                @include media(">=large_desktop", ">=xtra_large_desktop") {
                     left: -1060px;
+                }
+                @include media("<large_desktop") {
+                    left: -540px;
+                }
+                @include media("<=desktop") {
+                    left: -400px;
                 }
             }
         }

@@ -2,6 +2,7 @@
     font-family: CascadiaMono;
     font-weight: 400;
     display: flex;
+    align-items: center;
     justify-content: flex-end;
     padding-top: 35px;
     padding-bottom: 35px;
@@ -12,6 +13,7 @@
     }
 
     .nav__links {
+        padding-left: 40px;
         span {
             cursor: pointer;
             color: #626262;
@@ -19,9 +21,13 @@
             font-size: 16px;
             transition: 500ms;
 
+            &:last-child {
+                padding-right: 0px;
+            }
+
             &:hover {
                 transition: 250ms;
-                color: #383838;
+                color: #ffa014;
                 font-weight: 500;
             }
         }

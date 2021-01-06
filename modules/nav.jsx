@@ -8,8 +8,19 @@ const Nav = () => {
                 <Status />
             </div>
             <div className={styles.nav__links}>
-                <span>github</span>
-                <span>linkedIn</span>
+                <span>
+                    <a href="https://github.com/ahamedzoha" target="_blank">
+                        github
+                    </a>
+                </span>
+                <span>
+                    <a
+                        href="https://www.linkedin.com/in/azazahamed/"
+                        target="_blank"
+                    >
+                        linkedIn
+                    </a>
+                </span>
             </div>
         </div>
     );

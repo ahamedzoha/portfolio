@@ -1,4 +1,5 @@
 import styles from "./styles.module.scss";
+
 const Projects = () => {
     return (
         <main className={styles.project_main}>

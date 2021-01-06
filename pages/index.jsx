@@ -5,7 +5,7 @@ import circle from "../assets/circle.png";
 const Home = () => {
     return (
         <div className={styles.container}>
-            <main>
+            <main className={styles.container__hero}>
                 <div className={styles.text__container}>
                     <img src={circle} alt="circle" />
                     <h3>Hi there! 👋</h3>

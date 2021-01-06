@@ -1,3 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap");
+@import "./breakpoints.module.scss";
+
+// $breakpoints: (
+//     "phone": 320px,
+//     "tablet": 768px,
+//     "desktop": 1140px,
+//     "large_desktop": 1920px,
+//     "xtra_large_desktop": 2560px,
+// ) !default;
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    main {
+        display: flex;
+        align-items: center;
+        margin-top: 111px;
+        margin-bottom: 111px;
+        position: relative;
+
+        .text__container {
+            width: 574px;
+
+            h1 {
+                margin-top: 0px;
+                font-family: "Playfair Display", serif;
+                font-size: 72px;
+                font-weight: 400;
+                line-height: 96px;
+            }
+            h3 {
+                font-family: "Lato", sans-serif;
+                font-weight: 300;
+                font-size: 18px;
+                margin-bottom: 0px;
+            }
+            p {
+                font-family: "Lato", sans-serif;
+                font-weight: 400;
+                font-size: 24px;
+            }
+
+            img {
+                position: absolute;
+                width: 499px;
+                left: -750px;
+                top: 0px;
+                z-index: -1;
+
+                @include media(">=xtra_large_desktop") {
+                    left: -1060px;
+                }
+            }
+        }
+        .illustration__container {
+            img {
+                width: 562px;
+            }
+        }
+    }
+}
+
 // .container {
 //     min-height: 100vh;
 //     padding: 0 0.5rem;

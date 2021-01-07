@@ -14,21 +14,18 @@
 
     .nav__links {
         padding-left: 40px;
-        span {
-            cursor: pointer;
-            color: #626262;
-            padding: 10px 15px;
-            font-size: 16px;
-            transition: 500ms;
+        ul {
+            display: flex;
+            list-style: none;
+            li {
+                cursor: pointer;
+                color: #626262;
+                padding: 10px 15px;
+                font-size: 16px;
 
-            &:last-child {
-                padding-right: 0px;
-            }
-
-            &:hover {
-                transition: 250ms;
-                color: #ffa014;
-                font-weight: 500;
+                &:last-child {
+                    padding-right: 0px;
+                }
             }
         }
     }

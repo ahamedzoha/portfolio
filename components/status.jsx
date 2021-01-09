@@ -14,7 +14,7 @@ const Status = () => {
                     scale: 1.1,
                 }}
                 transition={{ type: "spring", stiffness: 400, damping: 0 }}
-                src={statusLightGreen}
+                src={statusLightRed}
                 alt="status"
             />
             <span>status: currently working at intelligent machines ...</span>

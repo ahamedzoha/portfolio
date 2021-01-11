@@ -76,6 +76,7 @@ const Home = () => {
                 name="email"
                 id="email"
                 placeholder="e.g. smith@example.com"
+                required
               />
               <label htmlFor="message">Your Message</label>
               {/* <input
@@ -90,7 +91,9 @@ const Home = () => {
                 cols="30"
                 rows="2"
                 placeholder="e.g. smith@example.com"
+                required
               ></textarea>
+              <button type="submit">Send</button>
             </form>
             <div className={styles.contact_form__bg_blur}></div>
           </div>

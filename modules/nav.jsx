@@ -23,30 +23,30 @@ const NavLinks = [
 
 const Nav = () => {
   return (
-    <div className={styles.nav__container}>
-      <div className={styles.nav__status}>
+    <div className={styles.nav_container}>
+      <div className={styles.nav_container__wrapper}>
         <Status />
-      </div>
-      <div className={styles.nav__links}>
-        <ul>
-          {NavLinks.map((navItem) => (
-            <motion.li
-              whileHover={{
-                scale: 1.2,
-                color: "#ffa014",
-              }}
-              transition={{
-                type: "spring",
-                stiffness: 300,
-              }}
-              key={navItem.label}
-            >
-              <Link href={navItem.link}>
-                <a target={navItem.target}>{navItem.label}</a>
-              </Link>
-            </motion.li>
-          ))}
-        </ul>
+        <div className={styles.nav__links}>
+          <ul>
+            {NavLinks.map((navItem) => (
+              <motion.li
+                whileHover={{
+                  scale: 1.2,
+                  color: "#ffa014",
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 300,
+                }}
+                key={navItem.label}
+              >
+                <Link href={navItem.link}>
+                  <a target={navItem.target}>{navItem.label}</a>
+                </Link>
+              </motion.li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   )

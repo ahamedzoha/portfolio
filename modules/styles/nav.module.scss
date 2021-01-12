@@ -1,32 +1,38 @@
-.nav__container {
-    font-family: CascadiaMono;
-    font-weight: 400;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-top: 35px;
-    padding-bottom: 35px;
-    max-width: 1140px;
-    margin: 0 auto;
+@import "../../styles/breakpoints.module.scss";
 
-    .nav__status {
-    }
+.nav_container {
+  font-family: CascadiaMono;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 35px;
+  padding-bottom: 35px;
+  width: 100vw;
+
+  flex-wrap: wrap;
+
+  &__wrapper {
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
 
     .nav__links {
-        padding-left: 40px;
-        ul {
-            display: flex;
-            list-style: none;
-            li {
-                cursor: pointer;
-                color: #626262;
-                padding: 10px 15px;
-                font-size: 16px;
+      padding-left: 40px;
+      ul {
+        display: flex;
+        list-style: none;
+        li {
+          cursor: pointer;
+          color: #626262;
+          padding: 10px 15px;
+          font-size: 16px;
 
-                &:last-child {
-                    padding-right: 0px;
-                }
-            }
+          &:last-child {
+            padding-right: 0px;
+          }
         }
+      }
     }
+  }
 }

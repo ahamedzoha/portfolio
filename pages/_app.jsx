@@ -21,7 +21,9 @@ function MyApp({ Component, pageProps }) {
         />
       </Head>
       <Nav />
-      <Component {...pageProps} />
+      <body>
+        <Component {...pageProps} />
+      </body>
     </>
   )
 }

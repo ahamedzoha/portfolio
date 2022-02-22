@@ -7,8 +7,8 @@ function App() {
   return (
     <div className="app">
       <Navbar />
-      {/* <Header />
-      <About />
+      <Header />
+      {/* <About />
       <Work />
       <Skills />
       <Testimonials />

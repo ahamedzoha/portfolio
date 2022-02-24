@@ -10,7 +10,7 @@ const navigationLinks = [
 
   {
     name: "Work",
-    link: "work",
+    link: "portfolio",
   },
   {
     name: "Skills",

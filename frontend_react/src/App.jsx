@@ -8,11 +8,11 @@ function App() {
     <div className="app">
       <Navbar />
       <Header />
-      {/* <About />
-      <Work />
-      <Skills />
-      <Testimonials />
-      <Footer /> */}
+      <About />
+      {/* <Work /> */}
+      {/* <Skills /> */}
+      {/* <Testimonials /> */}
+      {/* <Footer /> */}
     </div>
   )
 }

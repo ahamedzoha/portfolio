@@ -9,7 +9,7 @@ function App() {
       <Navbar />
       <Header />
       <About />
-      {/* <Work /> */}
+      <Work />
       {/* <Skills /> */}
       {/* <Testimonials /> */}
       {/* <Footer /> */}

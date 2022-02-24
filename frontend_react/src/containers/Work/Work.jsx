@@ -17,6 +17,7 @@ const Work = () => {
   const [filter, setFilter] = useState("All")
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 })
   const [portfolios, setPortfolios] = useState([])
+  const [filterPortfolio, setFilterPortfolio] = useState([])
 
   useEffect(() => {
     const query = `*[_type == "works"]`
@@ -24,11 +25,13 @@ const Work = () => {
       .fetch(query)
       .then((res) => {
         setPortfolios(res)
+        setFilterPortfolio(res)
       })
       .catch((err) => {
         console.log(err)
       })
   }, [])
+
   return (
     <>
       <h2 className="head-text" style={{ marginTop: "1.8rem" }}>
@@ -51,7 +54,57 @@ const Work = () => {
         animate={animateCard}
         transition={{ duration: 0.5, delayChildren: 0.5 }}
         className="app__work-portfolio"
-      ></motion.div>
+      >
+        {filterPortfolio.map((portfolio, index) => (
+          <div className="app__work-item app__flex" key={portfolio + index}>
+            <div className="app__work-img app__flex">
+              <img src={urlFor(portfolio.imgUrl)} alt={portfolio.title} />
+              <motion.div
+                whileHover={{ opacity: [0, 1] }}
+                transition={{
+                  duration: 0.5,
+                  ease: "easeInOut",
+                  staggerChildren: 0.5,
+                }}
+                className="app__work-hover app__flex"
+              >
+                <a
+                  href={portfolio.projectLink}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <motion.div
+                    whileInView={{ scale: [0, 1] }}
+                    whileHover={{ scale: [1, 0.9] }}
+                    transition={{
+                      duration: 0.25,
+                      ease: "easeInOut",
+                      staggerChildren: 0.5,
+                    }}
+                    className="app__flex"
+                  >
+                    <AiFillEye />
+                  </motion.div>
+                </a>
+                <a href={portfolio.codeLink} target="_blank" rel="noreferrer">
+                  <motion.div
+                    whileInView={{ scale: [0, 1] }}
+                    whileHover={{ scale: [1, 0.9] }}
+                    transition={{
+                      duration: 0.25,
+                      ease: "easeInOut",
+                      staggerChildren: 0.5,
+                    }}
+                    className="app__flex"
+                  >
+                    <AiFillGithub />
+                  </motion.div>
+                </a>
+              </motion.div>
+            </div>
+          </div>
+        ))}
+      </motion.div>
     </>
   )
 }

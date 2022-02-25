@@ -19,6 +19,15 @@ const Work = () => {
   const [portfolios, setPortfolios] = useState([])
   const [filterPortfolio, setFilterPortfolio] = useState([])
 
+  const handleFilter = (item) => {
+    setFilter(item)
+    setAnimateCard({ y: 100, opacity: 0 })
+
+    setTimeout(() => {
+      setAnimateCard({ y: 0, opacity: 1 })
+    }, 500)
+  }
+
   useEffect(() => {
     const query = `*[_type == "works"]`
     client
@@ -101,6 +110,16 @@ const Work = () => {
                   </motion.div>
                 </a>
               </motion.div>
+            </div>
+            <div className="app__work-content app__flex">
+              <h4 className="bold-text">{portfolio.title}</h4>
+              <p className="p-text" style={{ marginTop: 10 }}>
+                {portfolio.description}
+              </p>
+
+              <div className="app__work-tag app__flex">
+                <p className="p-text">{portfolio.tags[0].label}</p>
+              </div>
             </div>
           </div>
         ))}

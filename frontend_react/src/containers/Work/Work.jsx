@@ -29,6 +29,8 @@ const Work = () => {
   }
 
   useEffect(() => {
+    //TODO: fetch tags from sanity --> store in state
+    //TODO: fetch portfolios from sanity based on tags --> store in state
     const query = `*[_type == "works"]`
     client
       .fetch(query)

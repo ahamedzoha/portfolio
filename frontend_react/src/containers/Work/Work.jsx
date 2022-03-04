@@ -13,6 +13,8 @@ const filterList = [
   "Next.js Web App",
 ]
 
+const queryAllTags = `*[_type == 'works' && count(tags) > 0].tags[]`
+
 const Work = () => {
   const [filter, setFilter] = useState("All")
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 })
@@ -28,12 +30,24 @@ const Work = () => {
     }, 500)
   }
 
-  useEffect(() => {
-    //TODO: fetch tags from sanity --> store in state
-    //TODO: fetch portfolios from sanity based on tags --> store in state
-    //TODO: filter portfolios based on filter
+  const fetchTags = async () => {
+    const tags = await client.fetch(queryAllTags)
+
+    const uniqueTags = tags.filter((value, index) => {
+      const _value = JSON.stringify(value)
+      return (
+        index ===
+        tags.findIndex((obj) => {
+          return JSON.stringify(obj) === _value
+        })
+      )
+    })
+    console.log(uniqueTags)
+  }
+
+  const fetchPortfolios = async () => {
     const query = `*[_type == "works"]`
-    client
+    await client
       .fetch(query)
       .then((res) => {
         setPortfolios(res)
@@ -42,6 +56,14 @@ const Work = () => {
       .catch((err) => {
         console.log(err)
       })
+  }
+
+  useEffect(() => {
+    //TODO: fetch tags from sanity --> store in state
+    //TODO: fetch portfolios from sanity based on tags --> store in state
+    //TODO: filter portfolios based on filter
+    fetchTags()
+    fetchPortfolios()
   }, [])
 
   return (

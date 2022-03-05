@@ -5,14 +5,6 @@ import { motion } from "framer-motion"
 import { AppWrap } from "../../wrapper"
 import { urlFor, client } from "../../client"
 
-const filterList = [
-  "All",
-  "React Web App",
-  "Blockchain App",
-  "Gatsby Web App",
-  "Next.js Web App",
-]
-
 const queryAllTags = `*[_type == 'works' && count(tags) > 0].tags[]`
 const query = `*[_type == "works"]`
 
@@ -55,7 +47,6 @@ const Work = () => {
       )
     })
     setTags([{ label: "All", value: "All" }, ...uniqueTags])
-    // console.log(uniqueTags)
   }
 
   const fetchPortfolios = async () => {
@@ -71,9 +62,6 @@ const Work = () => {
   }
 
   useEffect(() => {
-    //TODO: fetch tags from sanity --> store in state
-    //TODO: fetch portfolios from sanity based on tags --> store in state
-    //TODO: filter portfolios based on filter
     fetchTags()
     fetchPortfolios()
   }, [])

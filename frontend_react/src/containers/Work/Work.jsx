@@ -5,32 +5,52 @@ import { motion } from "framer-motion"
 import { AppWrap } from "../../wrapper"
 import { urlFor, client } from "../../client"
 
-const filterList = [
-  "All",
-  "React Web App",
-  "Blockchain App",
-  "Gatsby Web App",
-  "Next.js Web App",
-]
+const queryAllTags = `*[_type == 'works' && count(tags) > 0].tags[]`
+const query = `*[_type == "works"]`
 
 const Work = () => {
   const [filter, setFilter] = useState("All")
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 })
+  const [tags, setTags] = useState([])
   const [portfolios, setPortfolios] = useState([])
   const [filterPortfolio, setFilterPortfolio] = useState([])
 
   const handleFilter = (item) => {
     setFilter(item)
-    setAnimateCard({ y: 100, opacity: 0 })
 
+    //Animations
+    setAnimateCard({ y: 100, opacity: 0 })
     setTimeout(() => {
       setAnimateCard({ y: 0, opacity: 1 })
+
+      //filter portfolios accroding to filter
+      if (item === "All") {
+        setFilterPortfolio(portfolios)
+      } else {
+        const filteredPortfolios = portfolios.filter((portfolio) =>
+          portfolio.tags[0].value.includes(item)
+        )
+        setFilterPortfolio(filteredPortfolios)
+      }
     }, 500)
   }
 
-  useEffect(() => {
-    const query = `*[_type == "works"]`
-    client
+  const fetchTags = async () => {
+    const tags = await client.fetch(queryAllTags)
+    const uniqueTags = tags.filter((value, index) => {
+      const _value = JSON.stringify(value)
+      return (
+        index ===
+        tags.findIndex((obj) => {
+          return JSON.stringify(obj) === _value
+        })
+      )
+    })
+    setTags([{ label: "All", value: "All" }, ...uniqueTags])
+  }
+
+  const fetchPortfolios = async () => {
+    await client
       .fetch(query)
       .then((res) => {
         setPortfolios(res)
@@ -39,6 +59,11 @@ const Work = () => {
       .catch((err) => {
         console.log(err)
       })
+  }
+
+  useEffect(() => {
+    fetchTags()
+    fetchPortfolios()
   }, [])
 
   return (
@@ -47,15 +72,15 @@ const Work = () => {
         My Creative <span>Portfolio</span> <span>Section</span>
       </h2>
       <div className="app__work-filter">
-        {filterList.map((item, index) => (
+        {tags.map((item, index) => (
           <div
-            key={item + index}
-            onClick={() => setFilter(item)}
+            key={item.value + index}
+            onClick={() => handleFilter(item.value)}
             className={`app__work-filter-item app__flex p-text ${
-              filter === item ? "item-active" : ""
+              filter === item.value ? "item-active" : ""
             }`}
           >
-            {item}
+            {item.value}
           </div>
         ))}
       </div>
@@ -118,7 +143,11 @@ const Work = () => {
               </p>
 
               <div className="app__work-tag app__flex">
-                <p className="p-text">{portfolio.tags[0].label}</p>
+                {portfolio.tags.map((tag, index) => (
+                  <p key={tag + index} className="p-text">
+                    {tag.label}
+                  </p>
+                ))}
               </div>
             </div>
           </div>

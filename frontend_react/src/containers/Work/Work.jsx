@@ -26,20 +26,20 @@ const Work = () => {
   const handleFilter = (item) => {
     setFilter(item)
 
-    //filter portfolios accroding to filter
-    if (item === "All") {
-      setFilterPortfolio(portfolios)
-    } else {
-      const filteredPortfolios = portfolios.filter((portfolio) =>
-        portfolio.tags.includes(item)
-      )
-      setFilterPortfolio(filteredPortfolios)
-    }
-
     //Animations
     setAnimateCard({ y: 100, opacity: 0 })
     setTimeout(() => {
       setAnimateCard({ y: 0, opacity: 1 })
+
+      //filter portfolios accroding to filter
+      if (item === "All") {
+        setFilterPortfolio(portfolios)
+      } else {
+        const filteredPortfolios = portfolios.filter((portfolio) =>
+          portfolio.tags[0].value.includes(item)
+        )
+        setFilterPortfolio(filteredPortfolios)
+      }
     }, 500)
   }
 
@@ -54,8 +54,8 @@ const Work = () => {
         })
       )
     })
-    setTags(uniqueTags)
-    console.log(uniqueTags)
+    setTags([{ label: "All", value: "All" }, ...uniqueTags])
+    // console.log(uniqueTags)
   }
 
   const fetchPortfolios = async () => {
@@ -155,7 +155,11 @@ const Work = () => {
               </p>
 
               <div className="app__work-tag app__flex">
-                <p className="p-text">{portfolio.tags[0].label}</p>
+                {portfolio.tags.map((tag, index) => (
+                  <p key={tag + index} className="p-text">
+                    {tag.label}
+                  </p>
+                ))}
               </div>
             </div>
           </div>

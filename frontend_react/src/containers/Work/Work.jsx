@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import "./Work.scss"
 import { AiFillEye, AiFillGithub } from "react-icons/ai"
 import { motion } from "framer-motion"
-import { AppWrap } from "../../wrapper"
+import { AppWrap, MotionWrap } from "../../wrapper"
 import { urlFor, client } from "../../client"
 
 const queryAllTags = `*[_type == 'works' && count(tags) > 0].tags[]`
@@ -157,4 +157,10 @@ const Work = () => {
   )
 }
 
-export default AppWrap(Work, "portfolio")
+// export default AppWrap(Work, "portfolio")
+
+export default AppWrap(
+  MotionWrap(Work, "app__works"),
+  "portfolio",
+  "app__primarybg"
+)

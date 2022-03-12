@@ -34,8 +34,14 @@ import bolt from "../assets/bolt.png"
 import nb from "../assets/nb.png"
 import skype from "../assets/skype.png"
 import spotify from "../assets/spotify.png"
+import solidity from "../assets/solidity.svg"
+import cisb from "../assets/cisb.png"
+import upwork from "../assets/upwork.svg"
 
 export default {
+  upwork,
+  cisb,
+  solidity,
   email,
   mobile,
   api,
